@@ -1,0 +1,5 @@
+{
+  "api.name": "account",
+  "account.http.address": "0.0.0.0",
+  "account.http.port" : 8090
+}
