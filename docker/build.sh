@@ -8,28 +8,28 @@ echo "Start mvn build for all modules......"
 
 cd ../
 
-mvn clean package -U
+#mvn clean package -U
 
 echo "mvn build complete......"
 
-echo "cleaning docker images "
-
-docker-compose -f $DIR/docker-compose.yml down
-
-docker rmi "vertx/accountservice"
-docker rmi "vertx/gateway"
-docker rmi "vertx/metadataservice"
+#echo "cleaning docker images "
+#
+#docker-compose -f $DIR/docker-compose.yml down
+#
+docker rmi "localhost:5000/accountservice"
+docker rmi "localhost:5000/gateway"
+docker rmi "localhost:5000/metadataservice"
 
 
 echo "Starting docker build ......"
 
-docker build -t "vertx/accountservice" $DIR/../accountservice
+docker build -t "localhost:5000/accountservice" $DIR/../accountservice
 
 #docker build -t "vertx/clustermanager" $DIR/../clustermanager
 
-docker build -t "vertx/gateway" $DIR/../gateway
+docker build -t "localhost:5000/gateway" $DIR/../gateway
 
-docker build -t "vertx/metadataservice" $DIR/../metadataservice
+docker build -t "localhost:5000/metadataservice" $DIR/../metadataservice
 
 echo "docker build complete ......"
 

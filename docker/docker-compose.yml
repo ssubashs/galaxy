@@ -1,19 +1,19 @@
 version: "2"
 services:
   metadata-service:
-    image: vertx/metadataservice
+    image: localhost:5000/metadataservice
     expose:
       - "8190"
     ports:
       - "8190:8190"
   account-service:
-    image: vertx/accountservice
+    image: localhost:5000/accountservice
     expose:
       - "8090"
     ports:
       - "8090:8090"
   api-gateway:
-    image: vertx/gateway
+    image: localhost:5000/gateway
     expose:
       - "8050"
     ports:
