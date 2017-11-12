@@ -13,8 +13,6 @@ export DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 docker-compose -f $DIR/docker-compose.yml stop
 
 # Start container cluster
-# First start persistence and auth container and wait for it
-#docker-compose -f $DIR/docker-compose.yml up -d elasticsearch logstash kibana mysql mongo redis keycloak-server
 echo "Waiting for Cleaning old process..."
 sleep 15
 

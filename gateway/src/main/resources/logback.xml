@@ -9,7 +9,7 @@
         <host>udp:logstash</host>
         <port>12201</port>
         <version>1.1</version>
-        <facility>account-service</facility>
+        <facility>api-gateway</facility>
         <extractStackTrace>true</extractStackTrace>
         <filterStackTrace>true</filterStackTrace>
         <mdcProfiling>true</mdcProfiling>

@@ -5,6 +5,30 @@
         </encoder>
     </appender>
 
+    <appender name="gelf" class="biz.paluch.logging.gelf.logback.GelfLogbackAppender">
+        <host>udp:logstash</host>
+        <port>12201</port>
+        <version>1.1</version>
+        <facility>metadata-service</facility>
+        <extractStackTrace>true</extractStackTrace>
+        <filterStackTrace>true</filterStackTrace>
+        <mdcProfiling>true</mdcProfiling>
+        <timestampPattern>yyyy-MM-dd HH:mm:ss,SSSS</timestampPattern>
+        <maximumMessageSize>8192</maximumMessageSize>
+
+        <!-- This are static fields -->
+        <!--<additionalFields>fieldName1=fieldValue1,fieldName2=fieldValue2</additionalFields>-->
+
+        <!-- This are fields using MDC -->
+        <mdcFields>mdcField1,mdcField2</mdcFields>
+        <dynamicMdcFields>mdc.*,(mdc|MDC)fields</dynamicMdcFields>
+        <includeFullMdc>true</includeFullMdc>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>INFO</level>
+        </filter>
+    </appender>
+
+
 
 
     <logger name="com.fun.ms.metadata" level="INFO"/>
@@ -13,5 +37,6 @@
 
     <root level="INFO">
         <appender-ref ref="stdout" />
+        <appender-ref ref="gelf" />
     </root>
 </configuration>
