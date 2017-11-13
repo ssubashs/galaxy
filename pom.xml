@@ -190,6 +190,12 @@
             <scope>test</scope>
         </dependency>
 
+        <dependency>
+            <groupId>biz.paluch.logging</groupId>
+            <artifactId>logstash-gelf</artifactId>
+            <version>1.11.0</version>
+        </dependency>
+
     </dependencies>
 
     <build>

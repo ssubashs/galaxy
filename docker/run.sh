@@ -9,14 +9,15 @@ export EXTERNAL_IP=$IP
 # Get this script directory (to find yml from any directory)
 export DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-# Stop
-docker-compose -f $DIR/docker-compose.yml stop
+kubectl create -f  $DIR/account-service-deployment.yaml
+kubectl create -f  $DIR/account-service-service.yaml
+kubectl create -f  $DIR/metadata-service-deployment.yaml
+kubectl create -f  $DIR/metadata-service-service.yaml
+#kubectl create -f  $DIR/api-gateway-deployment.yaml
+#kubectl create -f  $DIR/api-gateway-service.yaml
 
-# Start container cluster
-# First start persistence and auth container and wait for it
-#docker-compose -f $DIR/docker-compose.yml up -d elasticsearch logstash kibana mysql mongo redis keycloak-server
-echo "Waiting for Cleaning old process..."
-sleep 15
+#kubectl create -f  $DIR/apigate-ingress.yaml
 
-# Start other containers
-docker-compose -f $DIR/docker-compose.yml up
+sleep 10
+
+echo "deployed all the services"

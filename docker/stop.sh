@@ -10,4 +10,4 @@ export EXTERNAL_IP=$IP
 export DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 # Stop
-docker-compose -f $DIR/docker-compose.yml down
+kompose -f $DIR/docker-compose.yml down

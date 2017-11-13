@@ -1,0 +1,32 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -f docker-compose.yml
+    kompose.version: 1.4.0 ()
+  creationTimestamp: null
+  labels:
+    io.kompose.service: logstash
+  name: logstash
+spec:
+  replicas: 1
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        io.kompose.service: logstash
+    spec:
+      containers:
+      - args:
+        - -e
+        - input { gelf { host => "0.0.0.0" port => 12201 } } output { elasticsearch
+          { hosts => ["elasticsearch"] } }
+        image: logstash
+        name: logstash
+        ports:
+        - containerPort: 12201
+          protocol: UDP
+        resources: {}
+      restartPolicy: Always
+status: {}

@@ -1,17 +1,59 @@
 version: "2"
 services:
+  elasticsearch:
+    image: elasticsearch
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    command: elasticsearch
+    environment:
+      ES_JAVA_OPTS: "-Xms1g -Xmx1g"
+
+  logstash:
+    image: logstash
+    ports:
+      - "12201:12201/udp"
+    command: -e 'input { gelf { host => "0.0.0.0" port => 12201 } }
+              output { elasticsearch { hosts => ["elasticsearch"] } }'
+    links:
+      - elasticsearch
+    depends_on:
+      - elasticsearch
+
+  kibana:
+    image: kibana
+    ports:
+      - "5601:5601"
+    environment:
+      - ELASTICSEARCH_URL=http://elasticsearch:9200
+    links:
+      - elasticsearch
+      - logstash
+    depends_on:
+      - logstash
+
   metadata-service:
     image: localhost:5000/metadataservice
     expose:
       - "8190"
     ports:
       - "8190:8190"
+    depends_on:
+      - logstash
+    links:
+      - logstash
+
   account-service:
     image: localhost:5000/accountservice
     expose:
       - "8090"
     ports:
       - "8090:8090"
+    depends_on:
+      - logstash
+    links:
+      - logstash
+
   api-gateway:
     image: localhost:5000/gateway
     expose:
@@ -19,5 +61,6 @@ services:
     ports:
       - "8050:8050"
     links:
+      - logstash
       - metadata-service
       - account-service

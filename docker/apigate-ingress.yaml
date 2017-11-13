@@ -1,0 +1,19 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: galaxyapi
+  annotations:
+    ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - host: api.galaxy.com
+    http:
+      paths:
+      - path: /metadata
+        backend:
+          serviceName: metadata-service
+          servicePort: 8190
+      - path: /account
+        backend:
+          serviceName: account-service
+          servicePort: 8090
