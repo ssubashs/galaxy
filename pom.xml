@@ -20,8 +20,8 @@
         <mysql.conn.version>6.0.5</mysql.conn.version>
         <slf4j.version>1.7.22</slf4j.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <resteasy.version>3.1.0.Final</resteasy.version>
-        <resteasy.jackson2.version>3.0.19.Final</resteasy.jackson2.version>
+        <resteasy.version>3.1.4.Final</resteasy.version>
+        <resteasy.jackson2.version>3.1.4.Final</resteasy.jackson2.version>
         <google.guava.version>18.0</google.guava.version>
         <atlassian.fugue.version>2.6.0</atlassian.fugue.version>
         <lombok.version>1.14.8</lombok.version>
@@ -145,10 +145,17 @@
 
         <!-- https://mvnrepository.com/artifact/org.jboss.resteasy/resteasy-jackson-provider -->
 
+        <!--<dependency>-->
+            <!--<groupId>org.jboss.resteasy</groupId>-->
+            <!--<artifactId>resteasy-jackson-provider</artifactId>-->
+            <!--<version>${resteasy.version}</version>-->
+        <!--</dependency>-->
+
+        <!-- https://mvnrepository.com/artifact/org.jboss.resteasy/resteasy-jackson2-provider -->
         <dependency>
             <groupId>org.jboss.resteasy</groupId>
-            <artifactId>resteasy-jackson-provider</artifactId>
-            <version>${resteasy.version}</version>
+            <artifactId>resteasy-jackson2-provider</artifactId>
+            <version>${resteasy.jackson2.version}</version>
         </dependency>
 
         <!-- Jackson dependency -->

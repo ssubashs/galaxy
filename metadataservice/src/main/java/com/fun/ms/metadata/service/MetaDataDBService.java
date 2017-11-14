@@ -1,6 +1,7 @@
 package com.fun.ms.metadata.service;
 
 import com.atlassian.fugue.Option;
+import com.atlassian.fugue.Unit;
 import com.fun.ms.common.service.IMetaDataService;
 import com.fun.ms.common.service.MetaDataRequest;
 import com.fun.ms.common.service.MetaDataResponse;
@@ -37,8 +38,14 @@ public class MetaDataDBService implements IMetaDataService {
         } else {
            String id = request.getId();
            Map<String,String> data = Data.LocalDB.get(request.getType());
-            String label = Option.option(data.get(id)).getOrElse("Id not available.");
-            resultHandler.handle(Future.succeededFuture(new MetaDataResponse(request.getType(),id,label)));
+            Option.option(data.get(id)).fold(()->{
+                resultHandler.handle(ServiceException.fail(500,"id not found."));
+                return Unit.Unit();
+            },label->{
+                resultHandler.handle(Future.succeededFuture(new MetaDataResponse(request.getType(),id,label)));
+                return Unit.Unit();
+            });
+
         }
     }
 
