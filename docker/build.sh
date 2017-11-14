@@ -8,7 +8,7 @@ echo "Start mvn build for all modules......"
 
 cd ../
 
-#mvn clean package -U
+mvn clean package -U
 
 echo "mvn build complete......"
 
@@ -16,20 +16,23 @@ echo "mvn build complete......"
 #
 #docker-compose -f $DIR/docker-compose.yml down
 #
-docker rmi "localhost:5000/accountservice"
-docker rmi "localhost:5000/gateway"
-docker rmi "localhost:5000/metadataservice"
+#docker rmi "localhost:5000/accountservice"
+#docker rmi "localhost:5000/gateway"
+#docker rmi "localhost:5000/metadataservice"
 
 
 echo "Starting docker build ......"
 
 docker build -t "localhost:5000/accountservice" $DIR/../accountservice
+docker push "localhost:5000/accountservice"
 
 #docker build -t "vertx/clustermanager" $DIR/../clustermanager
 
-docker build -t "localhost:5000/gateway" $DIR/../gateway
+#docker build -t "localhost:5000/gateway" $DIR/../gateway
+#docker push "localhost:5000/gateway"
 
 docker build -t "localhost:5000/metadataservice" $DIR/../metadataservice
+docker push "localhost:5000/metadataservice"
 
 echo "docker build complete ......"
 
