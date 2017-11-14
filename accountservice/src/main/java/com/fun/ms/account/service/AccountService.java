@@ -24,7 +24,7 @@ public class AccountService {
 
     public static class Data{
         public static Map<Integer,Account> ACCOUNT_BY_ID = new ImmutableMap.Builder()
-                .put(1,Account.builder().id(1).owningCompany("Amazon").typeId("4").status("Active").build())
+                .put(1,Account.builder().id(1).owningCompany("Amazon").typeId("8").status("Active").build())
                 .put(2,Account.builder().id(2).owningCompany("IBM").typeId("4").status("Active").build())
                 .put(3,Account.builder().id(3).owningCompany("Geico").typeId("1").status("Active").build())
                 .put(4,Account.builder().id(4).owningCompany("Honda").typeId("2").status("Active").build())
