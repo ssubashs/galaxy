@@ -42,7 +42,7 @@ public abstract class BaseVerticle extends AbstractVerticle {
                             .setMaxFailures(cbOptions.getInteger("max-failures", 5))
                             .setTimeout(cbOptions.getLong("timeout", 10000L))
                             .setFallbackOnFailure(true)
-                            .setResetTimeout(cbOptions.getLong("reset-timeout", 30000L))
+                            .setResetTimeout(cbOptions.getLong("reset-timeout", 10000L))
             );
             log.info("Service discovery and circuit breakers setup.");
             future.complete();
