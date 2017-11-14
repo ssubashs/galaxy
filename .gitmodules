@@ -1,0 +1,15 @@
+[submodule "metadataservice"]
+	path = metadataservice
+	url = https://github.com/ssubashs/metadataservice.git
+[submodule "gateway"]
+	path = gateway
+	url = https://github.com/ssubashs/gateway.git
+[submodule "clustermanager"]
+	path = clustermanager
+	url = https://github.com/ssubashs/clustermanager.git
+[submodule "commonlib"]
+	path = commonlib
+	url = https://github.com/ssubashs/commonlib.git
+[submodule "accountservice"]
+	path = accountservice
+	url = https://github.com/ssubashs/accountservice.git

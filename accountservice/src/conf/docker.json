@@ -1,5 +1,0 @@
-{
-  "api.name": "account",
-  "account.http.address": "account-service",
-  "account.http.port" : 8090
-}

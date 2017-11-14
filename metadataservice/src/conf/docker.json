@@ -1,5 +1,0 @@
-{
-  "api.name" : "metadata",
-  "metadata.http.address" : "metadata-service",
-  "metadata.http.port" : 8190
-}
