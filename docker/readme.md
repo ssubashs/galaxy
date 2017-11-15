@@ -1,5 +1,5 @@
 
-Local setup.
+Local setup and commands.
 
 ```minikube start``` - start the minikube in a vm
 
@@ -12,5 +12,23 @@ Local setup.
 
 ```kubectl get deployments,pods,services,ing``` - show all resources deployed. 
 
+
+
 Ingress for routing services.
 ```minikube addons enable ingress```
+
+
+ ```  
+    internet
+        |
+  ------------
+  [ Services ]
+```
+An Ingress is a collection of rules that allow inbound connections to reach the cluster services.
+  ```
+    internet
+        |
+  ` [ Ingress ]`
+   --|-----|--
+   `[ Services ]`
+   ```

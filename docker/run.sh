@@ -20,5 +20,5 @@ echo "Waiting for Cleaning old process..."
 sleep 10
 
 # Start other containers
-docker-compose -f $DIR/docker-compose.yml up elasticsearch logstash kibana account-service metadata-service api-gateway
+docker-compose -f $DIR/docker-compose.yml up
 #docker-compose -f $DIR/docker-compose.yml up
