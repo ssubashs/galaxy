@@ -10,7 +10,7 @@
 ## pending
   - kubernetes dns discovery(or using kubenetes api's) for vertx clustering. 
   - deploy in gcp. 
-  - helm and graph with jenkins pipe-line.
+  - helm and graph with jenkins pipe-line.(package management.)
   - management console for vertx rest and event services(sample app using react or angularjs.)
   - elastic search container crashes in minikube. ?? 
   
